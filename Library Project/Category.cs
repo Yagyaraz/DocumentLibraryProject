@@ -22,6 +22,7 @@ namespace Library_Project
     
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual ICollection<Document> Document { get; set; }
         public virtual ICollection<Sub_Category> Sub_Category { get; set; }

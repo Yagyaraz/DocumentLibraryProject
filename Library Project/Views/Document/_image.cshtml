@@ -1,0 +1,37 @@
+﻿@model Library_Project.Models.DocumentFileModel
+
+@using (Html.BeginCollectionItem("ImageFile"))
+{
+
+    <div class="abc">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ImageFile, new { type = "file" })
+            </div>
+        </div>
+
+   
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button class="btn btn-danger rempartial" type="button"  onclick="remov()">
+                        <i class="fa-solid fa-trash"></i> Remove </button>
+                </div>
+            </div>
+    </div>
+   
+
+           
+      
+}
+<script type="text/javascript">
+    function remov() {
+
+        debugger
+        var ren = $().closest('.abc').remove();
+    }
+</script>
+
+

@@ -1,0 +1,14 @@
+﻿﻿@model Library_Project.Models.DocumentFileModel
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>अपलोड गर्नुहोस्</h2>
+
+@using (Html.BeginForm("Upload", "DocumentFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.TextBoxFor(model => model.ImageFile, new { type = "file" })
+    <input type="submit" value="Upload" class="btn btn-danger"/>
+
+}
