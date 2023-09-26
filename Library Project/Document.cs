@@ -29,6 +29,7 @@ namespace Library_Project
         public int District_Id { get; set; }
         public int Palika_Id { get; set; }
         public int Document_Type_Id { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual District District { get; set; }

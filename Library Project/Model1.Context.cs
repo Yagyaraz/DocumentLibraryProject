@@ -35,5 +35,6 @@ namespace Library_Project
         public DbSet<Palika> Palika { get; set; }
         public DbSet<State> State { get; set; }
         public DbSet<Sub_Category> Sub_Category { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

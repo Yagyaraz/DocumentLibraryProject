@@ -1,33 +1,112 @@
-﻿@{
+﻿﻿@model Library_Project.Models.DashboardCountModel
+
+@{
     ViewBag.Title = "Home Page";
 }
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
-
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+            <div class="card-inner">
+                <div class="header">
+                    <h2> कागजातहरू</h2>
+                    <h3 id="Documentid"></h3>
+                </div>
+                <div class="content">
+                    @*<p>All the details about the Documents will be available here</p>*@
+                </div>
+            </div>
+        </div>
     </div>
-</main>
+    <div class="col-sm-4">
+        <div class="card">
+
+            <div class="card-inner">
+                <div class="header">
+                    <h2>  वर्ग</h2>
+                    <h3 id="Categoryid"></h3>
+                </div>
+                <div class="content">
+                    @*<p>All the details about the Category will be available here</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+
+            <div class="card-inner">
+                <div class="header">
+                    <h3>  उप-वर्ग</h3>
+                    <h3 id="SubCategoryid"></h3>
+                </div>
+                <div class="content">
+                    @*<p>All the details about the  Sub-category will be available here</p>*@
+                </div>
+            </div>
+        </div>
+   
+    </div><div class="col-sm-4">
+        <div class="card">
+
+            <div class="card-inner">
+                <div class="header">
+                    <h2> कागजातको प्रकार</h2>
+                    <h3 id="DocumentTypeid"></h3>
+                </div>
+                <div class="content">
+                    @*<p>All the details about the Document Type will be available here</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+
+            <div class="card-inner">
+                <div class="header">
+                    <h2> कागजातको स्रोत</h2>
+                    <h3 id="DocumentSourceid"></h3>
+                </div>
+                <div class="content">
+                    @*<p>All the details about the Document Source will be available here</p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url:"@Url.Action("SendData","Home")",
+            method: "GET",
+            success: function (data) {
+
+
+                data = JSON.parse(data);
+
+                $("#Categoryid").text(data.CategoryCount);
+                $("#Documentid").text(data.DocumentCount);
+                $("#SubCategoryid").text(data.SubCategoryCount);
+                $("#FiscalYearid").text(data.FiscalYearCount);
+                $("#DocumentTypeid").text(data.DocumentTypeCount);
+                $("#DocumentSourceid").text(data.DocumentSourceCount);
+},
+            error: function (err) {
+
+                console.error(err);
+            }
+
+        })
+
+    })
+</script>
