@@ -29,18 +29,18 @@ namespace Library_Project.Controllers
             else
             {
                 var imagePath = "/File/";
-                if (model.ImageFile != null)
+                if (model.ImageFiles != null)
 
                     using (var con = new DLMSDatabaseEntities())
                     {
-                        if (model.ImageFile != null)
+                        if (model.ImageFiles != null)
                         {
 
 
-                            var fileName = Path.GetFileName(model.ImageFile.FileName);
+                            var fileName = Path.GetFileName(model.ImageFiles.FileName);
                             var path = Path.Combine(Server.MapPath(imagePath), fileName);
-                            model.ImageFile.SaveAs(path);
-                            model.File_Path = imagePath + model.ImageFile.FileName;
+                            model.ImageFiles.SaveAs(path);
+                            model.File_Path = imagePath + model.ImageFiles.FileName;
                             Document_File document_File = new Document_File()
                             {
                                 File_Path = model.File_Path,

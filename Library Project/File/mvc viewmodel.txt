@@ -1,0 +1,88 @@
+ public class HomeController : Controller
+    {
+        MvcCRUDDBEntities dbo= new MvcCRUDDBEntities();
+        public ActionResult Index()
+        {
+            var data=dbo.School.Select(x=> new SchoolViewModel()
+            {
+                Id = x.Id,
+                Address = x.Address,
+                Contact=x.Contact,
+            }).ToList();
+            return View(data);
+        }
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add(SchoolViewModel model) { 
+            School test = new School()
+            {
+                Name= model.Name,
+                Type= model.Type,
+                Address= model.Address, 
+                Contact= model.Contact,
+                
+            };
+            dbo.School.Add(test);
+            dbo.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Edit(int id) 
+        {
+            var data=dbo.School.Where(x=>x.Id==id).Select(x=> new SchoolViewModel()
+            {
+                Id=x.Id,
+                Address=x.Address,
+                Contact=x.Contact,
+                Type=x.Type,
+                Name=x.Name,
+                
+            }).FirstOrDefault();
+            return View(data);
+        }
+        [HttpPost]
+        public ActionResult Edit(SchoolViewModel model)
+        {
+            var data = dbo.School.Where(x => x.Id == model.Id).FirstOrDefault();
+            data.Contact = model.Contact;
+            data.Address = model.Address;
+            data.Name= model.Name;
+            data.Type= model.Type;
+            dbo.Entry(data).State = System.Data.Entity.EntityState.Modified;
+            dbo.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var data = dbo.School.Where(x => x.Id == id).Select(x => new SchoolViewModel()
+            {
+                Id=x.Id,
+                Name=x.Name,
+                Address=x.Address,
+                Contact=x.Contact,
+                Type=x.Type,
+            }).FirstOrDefault();
+            return View(data);
+        }
+        [HttpPost,ActionName("Delete")]
+        public ActionResult DeleteConfirm(SchoolViewModel model)
+        {
+            var data = dbo.School.Where(x => x.Id == model.Id).FirstOrDefault();
+            dbo.School.Remove(data);
+            dbo.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        public ActionResult Details(int id)
+        {
+            var data=dbo.School.Where(x=>x.Id==id).FirstOrDefault();
+            return View();
+        }
+    }
+}

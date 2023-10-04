@@ -3,110 +3,114 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .count-circle {
+        text-align: center;
+        font-size: 36px; /* Adjust the font size as needed */
+        width: 100px; /* Adjust the width and height to create a circle */
+        height: 50px;
+        line-height: 50px; /* Vertically center the text in the circle */
+        border-radius: 100%; /* Make it a circle */
+        background-color: #ffffff; /* Background color of the circle */
+        margin: 0 auto; /* Center the circle horizontally */
+        border: double;
+    }
+</style>
+
 <div class="row">
-    <div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-inner">
-                <div class="header">
-                    <h2> कागजातहरू</h2>
-                    <h3 id="Documentid"></h3>
-                </div>
-                <div class="content">
-                    @*<p>All the details about the Documents will be available here</p>*@
-                </div>
+    <div class="col-lg-3 col-5">
+        <div class="small-box " style="background: #e8c1c5 ">
+            <div class="inner">
+                <h2> कागजातहरू<br />&nbsp;</h2>
+                <h3 class="count-circle" style="text-align:center; color:black" id="Documentid"></h3>
             </div>
+            <div class="icon">
+                <i class="fa-solid fa-paperclip"></i>
+            </div>
+            <a href="#" class="small-box-footer"> <i class=" "></i></a>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-inner">
-                <div class="header">
-                    <h2>  वर्ग</h2>
-                    <h3 id="Categoryid"></h3>
-                </div>
-                <div class="content">
-                    @*<p>All the details about the Category will be available here</p>*@
-                </div>
+    <div class="col-lg-3 col-5">
+        <div class="small-box" style="background: #e8d5a2 ">
+            <div class="inner">
+                <h2> कागजातको<br /> स्रोत</h2>
+                <h3 class="count-circle" style="text-align:center; color:black" id="DocumentSourceid"></h3>
             </div>
+            <div class="icon">
+                <i class="fa-solid fa-font-awesome"></i>
+            </div>
+            <a href="#" class="small-box-footer"> <i class=""></i></a>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-inner">
-                <div class="header">
-                    <h3>  उप-वर्ग</h3>
-                    <h3 id="SubCategoryid"></h3>
-                </div>
-                <div class="content">
-                    @*<p>All the details about the  Sub-category will be available here</p>*@
-                </div>
+    <div class="col-lg-3 col-5">
+        <div class="small-box" style="background: #b0e8e7 ">
+            <div class="inner">
+                <h2> कागजातको <br /> प्रकार</h2>
+                <h3 class="count-circle" style="text-align:center; color:black" id="DocumentTypeid"></h3>
             </div>
-        </div>
-   
-    </div><div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-inner">
-                <div class="header">
-                    <h2> कागजातको प्रकार</h2>
-                    <h3 id="DocumentTypeid"></h3>
-                </div>
-                <div class="content">
-                    @*<p>All the details about the Document Type will be available here</p>*@
-                </div>
+            <div class="icon">
+                <i class="fa-regular fa-newspaper"></i>
             </div>
+            <a href="#" class="small-box-footer"> <i class=""></i></a>
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="card">
-
-            <div class="card-inner">
-                <div class="header">
-                    <h2> कागजातको स्रोत</h2>
-                    <h3 id="DocumentSourceid"></h3>
-                </div>
-                <div class="content">
-                    @*<p>All the details about the Document Source will be available here</p>*@
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+</div>
+<div style="width:45%; margin-left:250px" >
+    <canvas id="myChart" style="height:350px;width:100%"></canvas>
 </div>
 
 
 
-<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
-<script src="~/Scripts/jquery-3.4.1.js"></script>
+<!-- Include Chart.js library -->
+<!-- Add the canvas element where the chart will be rendered -->
 
-<script>
+@section Scripts{
+    <script>
     $(document).ready(function () {
         $.ajax({
-            url:"@Url.Action("SendData","Home")",
+            url: "@Url.Action("SendData","Home")",
             method: "GET",
             success: function (data) {
-
-
                 data = JSON.parse(data);
-
                 $("#Categoryid").text(data.CategoryCount);
                 $("#Documentid").text(data.DocumentCount);
                 $("#SubCategoryid").text(data.SubCategoryCount);
                 $("#FiscalYearid").text(data.FiscalYearCount);
                 $("#DocumentTypeid").text(data.DocumentTypeCount);
                 $("#DocumentSourceid").text(data.DocumentSourceCount);
-},
-            error: function (err) {
 
+                // Initialize the chart after loading data
+                const ctx = document.getElementById('myChart');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['कागजात', 'वर्ग', 'उप-वर्ग', 'डकुमेन्टको प्रकार ', 'डकुमेन्टको स्रोत ',],
+                        datasets: [{
+                            label: false,
+                            data: [(data.DocumentCount), (data.CategoryCount), (data.SubCategoryCount), (data.DocumentTypeCount), (data.DocumentSourceCount)],
+                            borderWidth: 1,
+                            backgroundColor: ["#FFB1C1","red","blue","yellow","white"]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            },
+            error: function (err) {
                 console.error(err);
             }
+        });
+    });
 
-        })
+    </script>
 
-    })
-</script>
+
+}
+
+

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>document Library</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -69,178 +69,187 @@
                     </div>
                         </li>*@
 
-                    <!-- Messages Dropdown Menu -->
-                    <!-- Notifications Dropdown Menu -->
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                    <li>Dear -@User.Identity.Name</li>
+                <!-- Messages Dropdown Menu -->
+                <!-- Notifications Dropdown Menu -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><b>Hello</b> <br />@User.Identity.Name</li>
 
                     <li>
 
                         <a class="btn btn-primary" style="margin-left:10px;" href="@Url.Action("Logout","Account")">Log Out</a>
                     </li>
                 }
-                </ul>
-            </nav>
-            <!-- /.navbar -->
-            <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <!-- Brand Logo -->
-                <a href="@Url.Action("Index","Home")" class="brand-link">
-                    <span class="brand-text" style="font-weight: bold; color:ghostwhite;">डकुमेण्ट लाईब्रेरी </span>
-                </a>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-white-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="@Url.Action("Index","Home")" class="brand-link">
+                <i class="fa-solid fa-book" style="font-size: 50px;"></i>
+                <span class="brand-text" style="font-weight: bold;font-size:24px; color:black;">डकुमेण्ट लाईब्रेरी </span><hr />
+            </a>
 
-                <!-- Sidebar -->
-                <div class="sidebar">
-                    <!-- Sidebar user panel (optional) -->
-                    <!-- Sidebar Menu -->
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <!-- Add icons to the links using the .nav-icon class
-                            with font-awesome or any other icon font library -->
-                            @*<li class="nav-header">EXAMPLES</li>*@
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                        with font-awesome or any other icon font library -->
+                        @*<li class="nav-header">EXAMPLES</li>*@
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","Document")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        कागजातहरू
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","Document")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
+                                    कागजातहरू
+                                </p>
+                            </a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","Category")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        कागजातको वर्ग
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","Category")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","SubCategory")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        कागजातको उप-वर्ग
-                                    </p>
-                                </a>
-                            </li>
+                                    कागजातको वर्ग
+                                </p>
+                            </a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","FiscalYear")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        आर्थिक बर्ष
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","SubCategory")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","DocumentType")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        कागजातको प्रकार
-                                    </p>
-                                </a>
-                            </li>
+                                    कागजातको उप-वर्ग
+                                </p>
+                            </a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("GetAllRecords","DocumentSource")" class="nav-link">
-                                    <i class="nav-icon far fa-image"></i>
-                                    <p>
-                                        कागजातको स्रोत
-                                    </p>
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","FiscalYear")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
 
-                        </ul>
-                    </nav>
-                    <!-- /.sidebar-menu -->
-                </div>
-                <!-- /.sidebar -->
-            </aside>
+                                    आर्थिक बर्ष
+                                </p>
+                            </a>
+                        </li>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                @*<h1 class="m-0">Dashboard</h1>*@
-                            </div><!-- /.col -->
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    @*<li class="breadcrumb-item"><a href="#"></a></li>
-                                        <li class="breadcrumb-item active"></li>*@
-                                </ol>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
-                <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","DocumentType")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
 
-                        @RenderBody()
-                        <!-- /.row (main row) -->
-                    </div><!-- /.container-fluid -->
-                </section>
-                <!-- /.content -->
+                                    कागजातको प्रकार
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("GetAllRecords","DocumentSource")" class="nav-link">
+                                <i class="fa-solid fa-gear"></i>
+                                <p style="font-size:22px; font-weight:bold;">
+
+                                    कागजातको स्रोत
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-                <strong>Copyright &copy; <a href="softechfoundation.com">Softtech Foundation</a>.</strong>
-                All rights reserved.
+            <!-- /.sidebar -->
+        </aside>
 
-            </footer>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            @*<h1 class="m-0">Dashboard</h1>*@
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                @*<li class="breadcrumb-item"><a href="#"></a></li>
+                                    <li class="breadcrumb-item active"></li>*@
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
 
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Control sidebar content goes here -->
-            </aside>
-            <!-- /.control-sidebar -->
+                    @RenderBody()
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
         </div>
-        <!-- ./wrapper -->
-        <!-- jQuery -->
-        <script src="~/Frontend/plugins/jquery/jquery.min.js"></script>
-        <!-- jQuery UI 1.11.4 -->
-        <script src="~/Frontend/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-        <script>
-            $.widget.bridge('uibutton', $.ui.button)
-        </script>
-        <!-- Bootstrap 4 -->
-        <script src="~/Frontend/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- ChartJS -->
-        <script src="~/Frontend/plugins/chart.js/Chart.min.js"></script>
-        <!-- Sparkline -->
-        <script src="plugins/sparklines/sparkline.js"></script>
-        <!-- JQVMap -->
-        <script src="~/Frontend/plugins/jqvmap/jquery.vmap.min.js"></script>
-        <script src="~/Frontend/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-        <!-- jQuery Knob Chart -->
-        <script src="~/Frontend/plugins/jquery-knob/jquery.knob.min.js"></script>
-        <!-- daterangepicker -->
-        <script src="~/Frontend/plugins/moment/moment.min.js"></script>
-        <script src="~/Frontend/plugins/daterangepicker/daterangepicker.js"></script>
-        <!-- Tempusdominus Bootstrap 4 -->
-        <script src="~/Frontend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-        <!-- Summernote -->
-        <script src="~/Frontend/plugins/summernote/summernote-bs4.min.js"></script>
-        <!-- overlayScrollbars -->
-        <script src="~/Frontend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="~/Frontend/dist/js/adminlte.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="~/Frontend/dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="~/Frontend/dist/js/pages/dashboard.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        @RenderSection("scripts", required: false)
-    </body>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer" style=" text-align:center">
+            <strong>Copyright &copy; <a href="softechfoundation.com">Softtech Foundation</a>.</strong>
+            All rights reserved.
+
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Frontend/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Frontend/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Frontend/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/Frontend/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Frontend/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Frontend/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Frontend/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/Frontend/plugins/moment/moment.min.js"></script>
+    <script src="~/Frontend/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Frontend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Frontend/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Frontend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Frontend/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Frontend/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/Frontend/dist/js/pages/dashboard.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("scripts", required: false)
+</body>
 </html>
 
 

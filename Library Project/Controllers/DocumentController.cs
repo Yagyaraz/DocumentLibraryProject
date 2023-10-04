@@ -55,9 +55,10 @@ namespace Library_Project.Controllers
                         {
 
 
-                            var fileName = Path.GetFileName(item.ImageFile.FileName);
+                            var fileName = Path.GetFileName(item.ImageFiles.FileName);
                             var path = Path.Combine(Server.MapPath(imagePath), fileName);
-                            item.ImageFile.SaveAs(path);
+                            //item..SaveAs(path);
+                            item.ImageFiles.SaveAs(path);    
                             item.File_Path = imagePath + item.Name;
                             Document_File document_File = new Document_File()
                             {
@@ -137,14 +138,14 @@ namespace Library_Project.Controllers
 
             using (var con = new DLMSDatabaseEntities())
             {
-                if (model.ImageFile != null)
+                if (model.ImageFiles != null)
                 {
 
 
-                    var fileName = Path.GetFileName(model.ImageFile.FileName);
+                    var fileName = Path.GetFileName(model.ImageFiles.FileName);
                     var path = Path.Combine(Server.MapPath(imagePath), fileName);
-                    model.ImageFile.SaveAs(path);
-                    model.File_Path = imagePath + model.ImageFile.FileName;
+                    model.ImageFiles.SaveAs(path);
+                    model.File_Path = imagePath + model.ImageFiles.FileName;
                     Document_File document_File = new Document_File()
                     {
                         File_Path = model.File_Path,

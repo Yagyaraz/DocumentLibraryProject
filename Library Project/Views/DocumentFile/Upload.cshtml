@@ -6,9 +6,14 @@
 
 <h2>अपलोड गर्नुहोस्</h2>
 
-@using (Html.BeginForm("Upload", "DocumentFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@*@using (Html.BeginForm("Upload", "DocumentFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.TextBoxFor(model => model.ImageFile, new { type = "file" })
     <input type="submit" value="Upload" class="btn btn-danger"/>
 
+}*@
+@using (Html.BeginForm("Upload", "DocumentFile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.TextBoxFor(model => model.ImageFiles, new { type = "file", multiple = "multiple" })
+    <input type="submit" value="Upload" class="btn btn-danger" />
 }

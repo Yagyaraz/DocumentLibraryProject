@@ -6,28 +6,35 @@
 
 
 <p>
-    @Html.ActionLink("नया थप्नुहोस", "Create")
+    <a class="btn btn-outline-primary" href="@Url.Action("Create")">नया थप्नुहोस</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+<table id="example" class="table table-hover" style="width:100%">
+    <thead class="table-dark ">
+        <tr>
+            <th>क.स</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <i class='fas fa-pencil-alt'></i> @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "action - link" }) |
-            <i class='fas fa-info-circle'></i> @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "action-link" }) |
-            <i class='fas fa-trash'></i> @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "action-link" }) |
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <i class='fas fa-pencil-alt'></i> @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "action - link" }) |
+                    <i class='fas fa-info-circle'></i> @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "action-link" }) |
+                    <i class='fas fa-trash'></i> @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "action-link" }) |
 
-        </td>
-    </tr>
-}
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

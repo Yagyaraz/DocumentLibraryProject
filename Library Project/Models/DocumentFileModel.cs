@@ -19,7 +19,7 @@ namespace Library_Project.Models
         [Required]
         public string File_Path { get; set; }
 
-        public HttpPostedFileBase ImageFile { get; set; }
+        public HttpPostedFileBase ImageFiles { get; set; }
 
 
     }
