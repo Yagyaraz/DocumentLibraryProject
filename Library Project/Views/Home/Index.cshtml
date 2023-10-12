@@ -17,7 +17,7 @@
     }
 </style>
 
-<div class="row">
+<div class="row" style="margin-left:200px">
     <div class="col-lg-3 col-5">
         <div class="small-box " style="background: #e8c1c5 ">
             <div class="inner">
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-<div style="width:45%; margin-left:250px" >
+<div style="width:40%; margin-left:250px" >
     <canvas id="myChart" style="height:350px;width:100%"></canvas>
 </div>
 
@@ -87,10 +87,10 @@
                     data: {
                         labels: ['कागजात', 'वर्ग', 'उप-वर्ग', 'डकुमेन्टको प्रकार ', 'डकुमेन्टको स्रोत ',],
                         datasets: [{
-                            label: false,
+                            label: "Count", 
                             data: [(data.DocumentCount), (data.CategoryCount), (data.SubCategoryCount), (data.DocumentTypeCount), (data.DocumentSourceCount)],
                             borderWidth: 1,
-                            backgroundColor: ["#FFB1C1","red","blue","yellow","white"]
+                            backgroundColor: ["#FFB1C1", "red", "blue", "yellow","#4222bf"]
                         }]
                     },
                     options: {

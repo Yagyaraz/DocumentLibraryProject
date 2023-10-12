@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Category_Id, ViewBag.CategoryList as SelectList, "Select Category", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Category_Id, ViewBag.CategoryList as SelectList, "-- छान्नुहोस् -- ", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Category_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Sub_Category_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Sub_Category_Id, ViewBag.SubCategoryList as SelectList, "Select SubCategory ", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Sub_Category_Id, ViewBag.SubCategoryList as SelectList, "-- छान्नुहोस् -- ", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Sub_Category_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Document_Source_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Document_Source_Id, ViewBag.DocumentSource as SelectList, "Select Document Source ", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Document_Source_Id, ViewBag.DocumentSource as SelectList, "-- छान्नुहोस्  --  ", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Document_Source_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fiscal_Year_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Fiscal_Year_Id, ViewBag.FiscalYear as SelectList, "Select Fiscal Year", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Fiscal_Year_Id, ViewBag.FiscalYear as SelectList, "-- छान्नुहोस्  -- ", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Fiscal_Year_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,7 +59,7 @@
             <div class="col-md-10">
                 @if (ViewBag.StateList != null)
                 {
-                    @Html.DropDownListFor(model => model.State_Id, ViewBag.StateList as SelectList, "Select State", new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.State_Id, ViewBag.StateList as SelectList, "-- प्रदेश--", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.State_Id, "", new { @class = "text-danger" })
 
                 }
@@ -70,7 +70,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.District_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.District_Id, ViewBag.DistrictList as SelectList, "Select District", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.District_Id, ViewBag.DistrictList as SelectList, "-- जिल्ला --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.District_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Palika_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Palika_Id, ViewBag.PalikaList as SelectList, "Select Palika", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Palika_Id, ViewBag.PalikaList as SelectList, "-- पालिका --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Palika_Id, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,7 +86,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Document_Type_Id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Document_Type_Id, ViewBag.DocumentType as SelectList, "Select Document Type", new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Document_Type_Id, ViewBag.DocumentType as SelectList, "-- छान्नुहोस् --", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Document_Type_Id, "", new { @class = "text-danger" })
             </div>
         </div>
